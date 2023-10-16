@@ -10,6 +10,8 @@ export const getBuildConfig = () => {
   const buildMode = process.env.BUILD_MODE ?? "standalone";
   const isApp = !!process.env.BUILD_APP;
   const version = "v" + tauriConfig.package.version;
+  const isHideUserApiKey = !!process.env.HIDE_USER_API_KEY;
+  const isSysHasOpenaiApiKey = !!process.env.OPENAI_API_KEY;
 
   const commitInfo = (() => {
     try {
@@ -38,6 +40,8 @@ export const getBuildConfig = () => {
     ...commitInfo,
     buildMode,
     isApp,
+    isHideUserApiKey,
+    isSysHasOpenaiApiKey,
   };
 };
 
